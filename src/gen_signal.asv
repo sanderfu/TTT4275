@@ -1,0 +1,12 @@
+
+floor(513/2)
+
+db2mag(10)
+
+std_deviation = 5;
+
+N = 1000;
+SNR = 10;
+X = signal(N,SNR);
+n = linspace(-2
+abs(std(X))
