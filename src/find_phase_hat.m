@@ -7,6 +7,6 @@ end
 if nargin < 4
     T = 10^-6;
 end
-phase_hat = angle(exp(-1i*omega_hat*n0*T*Big_F(omega_hat, x, T)));
+phase_hat = angle(exp(-1i*omega_hat*n0*T)*Big_F(omega_hat, x, T));
 end
 
