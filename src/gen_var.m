@@ -9,7 +9,7 @@ omega_error_arr = omega_error_arr.omega_error_arr;
 phi_error_arr = load('../Estimations/'+mapstr+'/phi_error_arr.mat');
 phi_error_arr = phi_error_arr.phi_error_arr;
 
-var_omega_error = var(omega_error_arr);
-var_phi_error = var (phi_error_arr);
+var_omega_error = (omega_error_arr*omega_error_arr')/(size(omega_error_arr, 2)-1);
+var_phi_error = phi_error_arr*phi_error_arr'/(size(phi_error_arr, 2)-1);
 end
 
