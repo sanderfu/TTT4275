@@ -8,7 +8,7 @@ end
 N = size(x, 2);
 n0 = -256;
 for n = 1:N
-    sum = sum + x(n)*exp(-1i*omega*(n0+n-1)*T);
+    sum = sum + x(n)*exp(-1i*omega*(n-1)*T);
 end
 result = sum/N;
 end

@@ -27,7 +27,7 @@ X = zeros(1,N);
 X_real = zeros(1,N);
 %Fill the signal array
 for n=n0:n0+N-1
-   X(n+abs(n0)+1) = A*exp(1i*(omega0*n*T+phi))+omega_samples(n+abs(n0)+1);
+   X(n+abs(n0)+1) = A*exp(1i*(omega0*n*T+phi))+std.*randn(1,1)+mean + 1i*std.*randn(1,1);
    X_real(n+abs(n0)+1) = A*exp(1i*(omega0*n*T+phi));
 end
 
