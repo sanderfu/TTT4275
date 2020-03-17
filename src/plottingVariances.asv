@@ -1,0 +1,55 @@
+function []= plottingVariances()
+%PLOTTINGVARIANCES Summary of this function goes here
+%   Detailed explanation goes here
+close all;
+clear;
+clc;
+
+SNR_mag = db2mag([-10, 0, 10, 20, 30, 40, 50, 60]);
+num_snr_values = size(SNR_mag, 2);
+omegas_crlb = zeros(1, num_snr_values);
+phis_crlb = zeros(1, num_snr_values);
+
+for i = 1:num_snr_values
+    [omegas_crlb(i), phis_crlb(i)] = get_CRLB(SNR_mag(i));
+end
+
+k_values = [10, 12, 14, 16, 18];
+variance_arrays_omega = [];
+variance_arrays_phi = [];
+for j = 1:size(SNR, 2)
+    %initialize k_values
+    variance_for_different_ks = zeros(size(k_values, 2));
+    for k = 1:size(k_values, 2)
+        %variance_for_different_ks(k) = get_var(k, snr)
+        % load each into variance_arrays_omega
+        % load each into variance_arrays_phi
+        % Make arrays with k_values and 
+    end
+    
+    variance_arrays_omega = [variance_arrays_omega; variance_for_different_ks]
+    variance_arrays_phi = [variance_arrays_phi; variance_for_different_ks]
+end
+
+
+
+
+
+figure()
+subplot(2, 1, 1)
+loglog(SNR_mag, omegas_crlb, 'black');
+hold on;
+for k = 1:size(variance_arrays_omega, 2)
+    loglog(SNR_mag, variance_arrays_omega(k,:));
+end
+legend('CRLB', 'k=10')
+
+
+subplot(2, 1, 2);
+for k = 1:size(variance_arrays_omega, 2)
+    loglog(SNR_mag, variance_arrays_phi(k,:));
+end
+legend('CRLB')
+
+end
+
