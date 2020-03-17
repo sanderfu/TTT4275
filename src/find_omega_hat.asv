@@ -4,12 +4,21 @@ function [omega_hat] = find_omega_hat(k, x, T)
 if nargin<3
     T = 10^-6;
 end
-max_F = 0;
-m_star = 0;
+max_FFT = 0;
+m_star = 1;
 M = 2^k;
-for m = 1:M
+fft_values = fft(x, m);
+for i = 1:size(fft_values)
     
-end
+% Find argmax(FFT)
+% for m = 1:M
+%     current_FFT = fft(x, m);
+%     if current_FFT>max_FFT
+%         max_FFT = current_FFT;
+%         m_star = m;
+%     end
+% end
+
 omega_hat = 2*pi*m_star/(M*T);
 end
 
