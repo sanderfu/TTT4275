@@ -1,3 +1,4 @@
+%% generate signal
 close all;
 clear;
 clc;
@@ -27,3 +28,7 @@ phase_hat = find_phase_hat(omega_hat(max_num), X);
 plot(X, 'x');
 hold on;
 plot(X_real, 'o');
+
+%% Plot Cramer Rao Lower Bound
+
+plottingVariances();
