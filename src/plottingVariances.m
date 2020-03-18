@@ -14,7 +14,7 @@ for i = 1:num_snr_values
     [omegas_crlb(i), phis_crlb(i)] = get_CRLB(SNR_mag(i));
 end
 
-k_values = [10, 12];
+k_values = [10, 12, 14];
 variance_arrays_omega = [];
 variance_arrays_phi = [];
 for k = 1:size(k_values, 2)
