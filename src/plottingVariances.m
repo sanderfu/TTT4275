@@ -4,7 +4,7 @@ function []= plottingVariances()
 close all;
 clear;
 clc;
-SNR = [-10, 0, 10, 20, 30, 40, 50, 60];
+SNR = [-10, 0, 10, 20, 30, 40, 50];
 SNR_mag = db2mag(SNR);
 num_snr_values = size(SNR_mag, 2);
 omegas_crlb = zeros(1, num_snr_values);
@@ -14,7 +14,7 @@ for i = 1:num_snr_values
     [omegas_crlb(i), phis_crlb(i)] = get_CRLB(SNR_mag(i));
 end
 
-k_values = [10, 12, 14,16,18];
+k_values = [10, 12, 14,16,18, 20];
 variance_arrays_omega = [];
 variance_arrays_phi = [];
 for k = 1:size(k_values, 2)
