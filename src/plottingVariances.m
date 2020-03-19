@@ -4,7 +4,7 @@ function []= plottingVariances()
 close all;
 clear;
 clc;
-SNR = [-10, 0, 10, 20, 30, 40, 50];
+SNR = [-10, 0, 10, 20, 30, 40, 50,60];
 SNR_mag = db2mag(SNR);
 num_snr_values = size(SNR_mag, 2);
 omegas_crlb = zeros(1, num_snr_values);
@@ -39,7 +39,7 @@ for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_omega(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20')
 
 
 subplot(2, 1, 2);
