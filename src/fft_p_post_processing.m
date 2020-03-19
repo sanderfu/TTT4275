@@ -45,7 +45,7 @@ f_real = 1e5;
 SNRs = [-10, 0, 10, 20, 30, 40, 50, 60];
 errors_before = zeros(1, size(SNRs,2));
 errors_after = zeros(1, size(SNRs,2));
-k = 10;
+k = 14;
 
 for i = 1:size(SNRs, 2)
    
