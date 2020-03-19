@@ -1,9 +1,12 @@
-function [X, X_real] = signal(N,SNR)
+function [X, X_real] = signal(N,SNR,f)
 %SIGNAL Summary of this function goes here
 %   Detailed explanation goes here
 % Defining constant variables
 T = 1e-6;
-f0 = 1e5;
+if nargin < 3
+f = 1e5;
+end
+f0 = f;
 omega0 = 2*pi*f0;
 phi = pi/8;
 A = 1;
