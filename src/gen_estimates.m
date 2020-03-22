@@ -9,8 +9,8 @@ omega0 = 2*pi*f0;
 
 estimation_samples = 500;
 N=513;
-k_values = [20];
-SNR_values = [60];
+k_values = [10, 12, 14, 16, 18, 20];
+SNR_values = [-10, 0, 10, 20, 30, 40, 50, 60];
 for i = 1:size(k_values,2)
     for SNR_index=1:size(SNR_values,2)
         SNR = SNR_values(SNR_index);
@@ -37,10 +37,11 @@ for i = 1:size(k_values,2)
         mapstr = "SNR("+int2str(SNR_values(SNR_index))+")";
         mapstr = mapstr+"_k("+int2str(k_values(i))+")";
         mkdir('../Estimations',mapstr);
-        save('../Estimations/'+mapstr+'/omega_error_arr.mat','omega_error_arr');
-        save('../Estimations/'+mapstr+'/phi_error_arr.mat','phi_error_arr');
-        save('../Estimations/'+mapstr+'/omega_hat_arr.mat','omega_hat_arr');
-        save('../Estimations/'+mapstr+'/phi_hat_arr.mat','phi_hat_arr');
+        mkdir('../EstimationsFFTMatlab', mapstr);
+        save('../EstimationsFFTMatlab/'+mapstr+'/omega_error_arr.mat','omega_error_arr');
+        save('../EstimationsFFTMatlab/'+mapstr+'/phi_error_arr.mat','phi_error_arr');
+        save('../EstimationsFFTMatlab/'+mapstr+'/omega_hat_arr.mat','omega_hat_arr');
+        save('../EstimationsFFTMatlab/'+mapstr+'/phi_hat_arr.mat','phi_hat_arr');
 
     end
     fprintf("Total progress: %i%%\n",i/size(k_values,2)*100);

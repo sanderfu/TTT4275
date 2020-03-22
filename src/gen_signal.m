@@ -14,7 +14,7 @@ SNR = 10;
 [X, X_real] = signal(N,SNR);
 
 n = linspace(-256,256,513);
-max_num = 4;
+max_num = 6;
 omega_hat = zeros(1,max_num);
 idx = 1;
 %X = [X, zeros(size(X,2), 1)'];
