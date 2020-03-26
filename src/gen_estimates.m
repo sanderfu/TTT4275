@@ -9,7 +9,7 @@ omega0 = 2*pi*f0;
 
 estimation_samples = 500;
 N=513;
-k_values = [10, 12, 14, 16, 18, 20];
+k_values = [10, 12, 14, 16, 18, 20, 22, 24, 26];
 SNR_values = [-10, 0, 10, 20, 30, 40, 50, 60];
 for i = 1:size(k_values,2)
     for SNR_index=1:size(SNR_values,2)
