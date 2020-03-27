@@ -14,11 +14,11 @@ SNR = 10;
 [X, X_real] = signal(N,SNR);
 
 n = linspace(-256,256,513);
-max_num = 6;
+max_num = 1;
 omega_hat = zeros(1,max_num);
 idx = 1;
-%X = [X, zeros(size(X,2), 1)'];
-for k = 10:2:8+max_num*2
+%X = [X, zeros(size(X,2)*2^5, 1)'];
+for k = 14:2:12+max_num*2
     omega_hat(idx) = find_omega_hat(k,X);
     idx = idx+1;
 end

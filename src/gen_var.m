@@ -4,12 +4,12 @@ function [var_omega_error, var_phi_error] = gen_var(SNR,k, directory)
 mapstr = "SNR("+int2str(SNR)+")";
 mapstr = mapstr+"_k("+int2str(k)+")";
 
-omega_error_arr = load('../'+directory+'/'+mapstr+'/omega_error_arr.mat');
-omega_error_arr = omega_error_arr.omega_error_arr;
-phi_error_arr = load('../'+directory+'/'+mapstr+'/phi_error_arr.mat');
-phi_error_arr = phi_error_arr.phi_error_arr;
+omega_hat_arr = load('../'+directory+'/'+mapstr+'/omega_hat_arr.mat');
+omega_hat_arr = omega_hat_arr.omega_hat_arr;
+phi_hat_arr = load('../'+directory+'/'+mapstr+'/phi_hat_arr.mat');
+phi_hat_arr = phi_hat_arr.phi_hat_arr;
 
-var_omega_error = (omega_error_arr*omega_error_arr')/(size(omega_error_arr, 2)-1);
-var_phi_error = phi_error_arr*phi_error_arr'/(size(phi_error_arr, 2)-1);
+var_omega_error = var(omega_hat_arr);
+var_phi_error = var(phi_hat_arr);
 end
 
