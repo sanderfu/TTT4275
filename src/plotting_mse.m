@@ -37,24 +37,28 @@ for k = 1:size(k_values, 2)
     variance_arrays_phi = [variance_arrays_phi; variance_for_different_snr_phi];
 end
 
-f1 = figure()
-subplot(2, 1, 1)
+f1_1 = figure();
 semilogy(SNR, omegas_crlb, 'black');
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_omega(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location','southwest')
+xlabel("SNR (dB)");
+ylabel("Mean squared error");
+title("MSE - Frequency");
 
-
-subplot(2, 1, 2);
+f1_2 = figure()
 semilogy(SNR, phis_crlb, 'black');
 hold on;
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18','Location','southwest')
+xlabel("SNR (dB)");
+ylabel("Mean squared error");
+title("MSE - Phase");
 
 %% Plotting our FFT
 directory = "EstimationsFFTMatlab";
@@ -90,27 +94,32 @@ end
 
 
 
-f2 = figure()
-subplot(2, 1, 1)
+f2_1 = figure()
 semilogy(SNR, omegas_crlb, 'black');
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_omega(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location','southwest')
+xlabel("SNR (dB)");
+ylabel("Mean squared error");
+title("MSE - Frequency");
 
-
-subplot(2, 1, 2);
+f2_2 = figure()
 semilogy(SNR, phis_crlb, 'black');
 hold on;
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18','Location','southwest')
+xlabel("SNR (dB)");
+ylabel("Mean squared error");
+title("MSE - Phase");
 
-
-movegui(f1, 'west')
-movegui(f2, 'east')
+movegui(f1_1, 'northwest')
+movegui(f1_2, 'southwest')
+movegui(f2_1, 'northeast')
+movegui(f2_2, 'southeast')
 end
 
