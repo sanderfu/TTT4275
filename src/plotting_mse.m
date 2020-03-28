@@ -2,7 +2,7 @@ function []= plotting_mse()
 %PLOTTINGVARIANCES Summary of this function goes here
 %   Detailed explanation goes here
 
-%% Plotting MatlabFFT
+%% Plotting our FFT
 close all;
 clear;
 clc;
@@ -60,7 +60,7 @@ xlabel("SNR (dB)");
 ylabel("Mean squared error");
 title("MSE - Phase");
 
-%% Plotting our FFT
+%% Plotting MatlabFFT
 directory = "EstimationsFFTMatlab";
 SNR = [-10, 0, 10, 20, 30, 40, 50,60];
 SNR_mag = db2mag(SNR);

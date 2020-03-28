@@ -2,7 +2,7 @@ function []= plottingVariances()
 %PLOTTINGVARIANCES Summary of this function goes here
 %   Detailed explanation goes here
 
-%% Plotting MatlabFFT
+%% Plotting outFFT
 close all;
 clear;
 clc;
@@ -37,28 +37,32 @@ for k = 1:size(k_values, 2)
     variance_arrays_phi = [variance_arrays_phi; variance_for_different_snr_phi];
 end
 
-f1 = figure()
-sgtitle('Our fft');
-
-subplot(2, 1, 1)
+f1_1 = figure()
 semilogy(SNR, omegas_crlb, 'black');
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_omega(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20')
+grid on;
+title("Variance - Frequency estimation error");
+xlabel("SNR (dB)");
+ylabel("Variance");
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
 
-
-subplot(2, 1, 2);
+f1_2 = figure()
 semilogy(SNR, phis_crlb, 'black');
 hold on;
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18')
+grid on;
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
+title("Variance - Phase estimation error");
+xlabel("SNR (dB)");
+ylabel("Variance");
 
-%% Plotting our FFT
+%% Plotting MatlabFFT
 directory = "EstimationsFFTMatlab";
 SNR = [-10, 0, 10, 20, 30, 40, 50,60];
 SNR_mag = db2mag(SNR);
@@ -93,27 +97,35 @@ end
 
 
 
-f2 = figure()
-sgtitle('Matlab');
-subplot(2, 1, 1)
+f2_1 = figure();
 semilogy(SNR, omegas_crlb, 'black');
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_omega(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20')
+grid on;
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
+title("Variance - Frequency estimation error");
+xlabel("SNR (dB)");
+ylabel("Variance");
 
-subplot(2, 1, 2);
+f2_2 = figure();
 semilogy(SNR, phis_crlb, 'black');
 hold on;
 for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18')
+grid on;
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
+title("Variance - Phase estimation error");
+xlabel("SNR (dB)");
+ylabel("Variance");
 
 
-movegui(f1, 'west')
-movegui(f2, 'east')
+movegui(f1_1, 'northwest')
+movegui(f1_2, 'southwest')
+movegui(f2_1, 'northeast')
+movegui(f2_2, 'southeast')
 end
 
