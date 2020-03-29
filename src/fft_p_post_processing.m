@@ -85,21 +85,24 @@ errors_after_phase(i) = abs(phase_hat_after-phase_0);
 end
 
 f1 = figure();
-plot(SNRs, errors_before_omega_k10);
+semilogy(SNRs, errors_before_omega_k10,'DisplayName', 'k=10, no post-processing','LineWidth',1.5);
 hold on;
-plot(SNRs, errors_after_omega);
-legend('errors before post-processing', 'errors after post-processing');
-title('Errors in estimation before and after post-processing, frequency');
-xlabel('SNR');
+semilogy(SNRs, errors_after_omega,'DisplayName','k=10, with post-processing','LineWidth',1.5);
+semilogy(SNRs, errors_before_omega_k20,'--','DisplayName', 'k=20, no post-processing','LineWidth',1.5);
+ylim([10^-1 10^4]);
+legend('location','northeast');
+grid on;
+xlabel('SNR (dB)');
 ylabel('Error in frequency estimate');
 
 f2 = figure();
-plot(SNRs, errors_before_phase_k10);
+plot(SNRs, errors_before_phase_k10,'DisplayName', 'k=10, no post-processing','LineWidth',1.5);
 hold on;
-plot(SNRs, errors_after_phase);
-legend('errors before post-processing', 'errors after post-processing');
-title('Errors in estimation before and after post-processing, phase');
-xlabel('SNR');
+plot(SNRs, errors_after_phase,'DisplayName','k=10, with post-processing','LineWidth',1.5);
+plot(SNRs, errors_before_phase_k20,'--','DisplayName','k=20, no post-processing','LineWidth',1.5);
+legend('location','northeast');
+grid on;
+xlabel('SNR (dB)');
 ylabel('Error in phase estimate');
 
 movegui(f1, 'west');
