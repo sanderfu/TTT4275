@@ -7,7 +7,7 @@ end
 max_FFT = 0;
 m_star = 1;
 M = 2^k;
-fft_values = fft(x, M+15);
+fft_values = fft(x, M);
 [max_value, m_star] = max(abs(fft_values), [], 2, 'linear');
 
 % Find argmax(FFT)

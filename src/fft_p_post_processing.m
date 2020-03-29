@@ -47,7 +47,7 @@ errors_before_omega = zeros(1, size(SNRs,2));
 errors_after_omega = zeros(1, size(SNRs,2));
 errors_before_phase = zeros(1, size(SNRs,2));
 errors_after_phase = zeros(1, size(SNRs,2));
-k = 14;
+k = 10;
 phase_0 = pi/8;
 for i = 1:size(SNRs, 2)
    
