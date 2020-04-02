@@ -3,9 +3,9 @@ function []= plotting_mse()
 %   Detailed explanation goes here
 
 %% Plotting our FFT
-close all;
-clear;
-clc;
+% close all;
+% clear;
+% clc;
 directory = "Estimations";
 
 SNR = [-10, 0, 10, 20, 30, 40, 50,60];
@@ -46,7 +46,7 @@ end
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location','southwest')
 xlabel("SNR (dB)");
 ylabel("Mean squared error");
-title("MSE - Frequency");
+title("MSE - Frequency, our FFT function");
 
 f1_2 = figure()
 semilogy(SNR, phis_crlb, 'black');
@@ -55,10 +55,10 @@ for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18','Location','southwest')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20', 'Location','southwest')
 xlabel("SNR (dB)");
 ylabel("Mean squared error");
-title("MSE - Phase");
+title("MSE - Phase, our FFT-function");
 
 %% Plotting MatlabFFT
 directory = "EstimationsFFTMatlab";
@@ -103,7 +103,7 @@ end
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location','southwest')
 xlabel("SNR (dB)");
 ylabel("Mean squared error");
-title("MSE - Frequency");
+title("MSE - Frequency, Matlab's FFT function");
 
 f2_2 = figure()
 semilogy(SNR, phis_crlb, 'black');
@@ -112,10 +112,10 @@ for k = 1:size(k_values, 2)
     hold on;
     semilogy(SNR, variance_arrays_phi(k,:));
 end
-legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18','Location','southwest')
+legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20', 'Location','southwest')
 xlabel("SNR (dB)");
 ylabel("Mean squared error");
-title("MSE - Phase");
+title("MSE - Phase, Matlab's FFT function");
 
 movegui(f1_1, 'northwest')
 movegui(f1_2, 'southwest')

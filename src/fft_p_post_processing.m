@@ -1,44 +1,44 @@
 %% Using k=10 to obtain omega_hat, then further minimizing with fminsearch
 
-close all;
-clear;
-clc;
+% close all;
+% clear;
+% clc;
 %rng('shuffle');
 
 %std_deviation = 5;
 
-N = 513;
-T = 1e-6;
-f_real = 1e5;
-SNR = 10;
-[X, X_real] = signal(N,SNR);
-k = 14;
-plot(X, 'x');
-hold on;
-plot(X_real, 'o');
-
-
-omega_hat_before_minsearch = find_omega_hat(k,X);
-
-f_hat_before_fminsearch = omega_hat_before_minsearch/(2*pi);
-phase_hat = find_phase_hat(omega_hat_before_minsearch, X);
-
-[omega_hat_after_minsearch,FVAL,EXITFLAG,OUTPUT] = fminsearch(@(omega) -abs(Big_F(omega, X, T)), omega_hat_before_minsearch) ; 
-f_hat_after_fminsearch = omega_hat_after_minsearch/(2*pi);
-
-error_before_omega = abs(f_hat_before_fminsearch-f_real);
-error_after_omega = abs(f_hat_after_fminsearch-f_real);
-disp('Error before');
-disp(error_before_omega);
-disp('Error after');
-disp(error_after_omega);
-disp('Final f:');
-disp(f_hat_after_fminsearch);
-
-%% Different values of SNR
-close all;
-clear;
-clc;
+% N = 513;
+% T = 1e-6;
+% f_real = 1e5;
+% SNR = 10;
+% [X, X_real] = signal(N,SNR);
+% k = 14;
+% plot(X, 'x');
+% hold on;
+% plot(X_real, 'o');
+% 
+% 
+% omega_hat_before_minsearch = find_omega_hat(k,X);
+% 
+% f_hat_before_fminsearch = omega_hat_before_minsearch/(2*pi);
+% phase_hat = find_phase_hat(omega_hat_before_minsearch, X);
+% 
+% [omega_hat_after_minsearch,FVAL,EXITFLAG,OUTPUT] = fminsearch(@(omega) -abs(Big_F(omega, X, T)), omega_hat_before_minsearch) ; 
+% f_hat_after_fminsearch = omega_hat_after_minsearch/(2*pi);
+% 
+% error_before_omega = abs(f_hat_before_fminsearch-f_real);
+% error_after_omega = abs(f_hat_after_fminsearch-f_real);
+% disp('Error before');
+% disp(error_before_omega);
+% disp('Error after');
+% disp(error_after_omega);
+% disp('Final f:');
+% disp(f_hat_after_fminsearch);
+% 
+% %% Different values of SNR
+% close all;
+% clear;
+% clc;
 N = 513;
 T = 1e-6;
 f_real = 1e5;
@@ -52,12 +52,16 @@ errors_after_phase = zeros(1, size(SNRs,2));
 k10 = 10;
 k20 = 20;
 phase_0 = pi/8;
+signalFigure = figure();
 for i = 1:size(SNRs, 2)
    
-[X, X_real] = signal(N,SNRs(i), f_real);
-plot(X, 'x');
-hold on;
-plot(X_real, 'o');
+ 
+ [X, X_real] = signal(N,SNRs(i), f_real);
+ plot(X, 'x');
+ hold on;
+ plot(X_real, 'o');
+ title('Plot of complex exponential signal');
+ legend('X generated with f deterministic = 1e5', 'X generated with f stochastic, mean = 1e5');
 
 
 omega_hat_before_minsearch_k10 = find_omega_hat(k10,X);

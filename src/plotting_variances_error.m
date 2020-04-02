@@ -1,11 +1,11 @@
-function []= plottingVariances()
+function []= plotting_variances_error()
 %PLOTTINGVARIANCES Summary of this function goes here
 %   Detailed explanation goes here
 
 %% Plotting outFFT
-close all;
-clear;
-clc;
+% close all;
+% clear;
+% clc;
 directory = "Estimations";
 
 SNR = [-10, 0, 10, 20, 30, 40, 50,60];
@@ -44,7 +44,7 @@ for k = 1:size(k_values, 2)
     semilogy(SNR, variance_arrays_omega(k,:));
 end
 grid on;
-title("Variance - Frequency estimation error");
+title("Variance - Frequency estimation error, our FFT function");
 xlabel("SNR (dB)");
 ylabel("Variance");
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
@@ -58,7 +58,7 @@ for k = 1:size(k_values, 2)
 end
 grid on;
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
-title("Variance - Phase estimation error");
+title("Variance - Phase estimation error, our FFT function");
 xlabel("SNR (dB)");
 ylabel("Variance");
 
@@ -105,7 +105,7 @@ for k = 1:size(k_values, 2)
 end
 grid on;
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
-title("Variance - Frequency estimation error");
+title("Variance - Frequency estimation error, Matlab's FFT function");
 xlabel("SNR (dB)");
 ylabel("Variance");
 
@@ -118,7 +118,7 @@ for k = 1:size(k_values, 2)
 end
 grid on;
 legend('CRLB', 'k=10', 'k=12', 'k=14', 'k=16', 'k=18', 'k=20','Location', 'southwest')
-title("Variance - Phase estimation error");
+title("Variance - Phase estimation error, Matlab's FFT function");
 xlabel("SNR (dB)");
 ylabel("Variance");
 
