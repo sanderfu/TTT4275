@@ -1,6 +1,6 @@
 function []= plotting_variances_error()
-%PLOTTINGVARIANCES Summary of this function goes here
-%   Detailed explanation goes here
+%plotting_variances_error plots the variance of the error in estimates of frequency
+%and phase.
 
 %% Plotting outFFT
 % close all;

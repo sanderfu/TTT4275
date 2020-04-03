@@ -1,5 +1,5 @@
 function [phase_hat] = find_phase_hat(omega_hat, x, n0, T)
-%FIND_PHASE_HAT Summary of this function goes here
+%FIND_PHASE_HAT 
 % Given an estimate for the frequency and signal samples, returns an
 % estimate of the phase. Uses equation 7 in task description
 

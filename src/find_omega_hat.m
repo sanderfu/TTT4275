@@ -1,6 +1,6 @@
 function [omega_hat] = find_omega_hat(k, x, T)
 %FIND_OMEGA_HAT 
-% Given a FFT size and signal samples, returns an estimate of
+% Given an FFT size and signal samples, returns an estimate of
 % the frequency using the MLE.
 
 if nargin<3

@@ -1,4 +1,5 @@
-%% Task 1b) 
+function [] = plotting_fft_plus_post_processing()
+%% fft_plus_post_processing Implements Task 1b) 
 
 % Task 1b finds errors in estimates before and after post-processing and
 % plots them.
@@ -17,8 +18,8 @@ f_real = 1e5;
 SNRs = [-10, 0, 10, 20, 30, 40, 50, 60];
 
 % Allocate space in arrays.
-errors_before_omega_k10 = zeros(1, size(SNRs,2));
-errors_before_omega_k20 = zeros(1, size(SNRs,2));
+errors_before_f_k10 = zeros(1, size(SNRs,2));
+errors_before_f_k20 = zeros(1, size(SNRs,2));
 errors_after_omega = zeros(1, size(SNRs,2));
 errors_before_phase_k10 = zeros(1, size(SNRs,2));
 errors_before_phase_k20 = zeros(1, size(SNRs,2));
@@ -51,11 +52,13 @@ phase_hat_before_k20 = find_phase_hat(omega_hat_before_minsearch_k20, X);
 [omega_hat_after_minsearch,FVAL,EXITFLAG,OUTPUT] = fminsearch(@(omega) -abs(Big_F(omega, X, T)), omega_hat_before_minsearch_k10) ; 
 f_hat_after_fminsearch = omega_hat_after_minsearch/(2*pi);
 phase_hat_after = find_phase_hat(omega_hat_after_minsearch, X);
-error_before_omega_k10 = abs(f_hat_before_fminsearch_k10-f_real);
-error_before_omega_k20 = abs(f_hat_before_fminsearch_k20-f_real);
+
+% Calculate errors
+error_before_f_k10 = abs(f_hat_before_fminsearch_k10-f_real);
+error_before_f_k20 = abs(f_hat_before_fminsearch_k20-f_real);
 error_after_omega = abs(f_hat_after_fminsearch-f_real);
-errors_before_omega_k10(i) = error_before_omega_k10;
-errors_before_omega_k20(i) = error_before_omega_k20;
+errors_before_f_k10(i) = error_before_f_k10;
+errors_before_f_k20(i) = error_before_f_k20;
 errors_after_omega(i) = error_after_omega;
 
 errors_before_phase_k10(i) = abs(phase_hat_before_k10-phase_0);
@@ -67,10 +70,10 @@ end
 % Plotting 
 
 f1 = figure();
-semilogy(SNRs, errors_before_omega_k10,'DisplayName', 'k=10, no post-processing','LineWidth',1.5);
+semilogy(SNRs, errors_before_f_k10,'DisplayName', 'k=10, no post-processing','LineWidth',1.5);
 hold on;
 semilogy(SNRs, errors_after_omega,'DisplayName','k=10, with post-processing','LineWidth',1.5);
-semilogy(SNRs, errors_before_omega_k20,'--','DisplayName', 'k=20, no post-processing','LineWidth',1.5);
+semilogy(SNRs, errors_before_f_k20,'--','DisplayName', 'k=20, no post-processing','LineWidth',1.5);
 ylim([10^-1 10^4]);
 legend('location','northeast');
 grid on;
@@ -89,3 +92,4 @@ ylabel('Error in phase estimate');
 
 movegui(f1, 'west');
 movegui(f2, 'east');
+end

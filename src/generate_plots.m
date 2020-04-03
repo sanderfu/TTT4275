@@ -8,4 +8,4 @@ plotting_variances_error();
 
 plotting_mse();
 
-fft_plus_post_processing();
+plotting_fft_plus_post_processing();

@@ -1,6 +1,7 @@
 function [X, X_real] = signal(N,SNR,f)
-%SIGNAL Summary of this function goes here
-%   Detailed explanation goes here
+%SIGNAL Generate a complex exponential signal embedded in White Gaussian
+%Noise
+
 % Defining constant variables
 T = 1e-6;
 if nargin < 3
@@ -23,8 +24,7 @@ mean = 0;
 %Creating the noise for all samples from normal distribution (Gaussian
 %distribution)
 
-omega_samples = std.*randn(1,N)+mean + 1i*std.*randn(1,N);
-%omega_samples = omega_samples + 1i*omega_samples;
+
 %Allocate space for signal samples
 X = zeros(1,N);
 X_real = zeros(1,N);

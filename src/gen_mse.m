@@ -1,6 +1,6 @@
 function [mse_omega, mse_phi] = gen_mse(SNR,k, directory)
-%GEN_VAR Summary of this function goes here
-%   Detailed explanation goes here
+%GEN_VAR Generates mean square error of estimation samples.
+
 mapstr = "SNR("+int2str(SNR)+")";
 mapstr = mapstr+"_k("+int2str(k)+")";
 

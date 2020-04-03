@@ -1,8 +1,9 @@
 function []= plotting_mse()
-%PLOTTINGVARIANCES Summary of this function goes here
-%   Detailed explanation goes here
+%plotting_mse plots the mean squared error of the estimates of frequency
+%and phase.
 
-%% Plotting our FFT
+
+%% Plotting from our FFT
 % close all;
 % clear;
 % clc;
