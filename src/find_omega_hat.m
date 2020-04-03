@@ -1,17 +1,23 @@
 function [omega_hat] = find_omega_hat(k, x, T)
 %FIND_OMEGA_HAT 
 % Given a FFT size and signal samples, returns an estimate of
-% the frequency.
+% the frequency using the MLE.
 
 if nargin<3
     T = 10^-6;
 end
-max_FFT = 0;
-m_star = 1;
+
 M = 2^k;
+
+%Calculate m_star with Matlab's built in fft-function.
 fft_values = fft(x, M);
 [max_value, m_star] = max(abs(fft_values), [], 2, 'linear');
 
+
+%Calculate m_star with our fft-function.
+
+% max_FFT = 0;
+% m_star = 1;
 % Find argmax(FFT)
 % for m = 1:M
 %     current_FFT = abs(fast_fourier_transform(m, M, x, T));

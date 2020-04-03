@@ -1,5 +1,5 @@
 function [result] = Big_F(omega, x, T)
-% BIG_F Calculates equation 6, given omega and x
+% BIG_F Calculates equation 6 in task description.
 
 sum = 0;
 if nargin<3

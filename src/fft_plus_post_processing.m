@@ -1,61 +1,36 @@
-%% Using k=10 to obtain omega_hat, then further minimizing with fminsearch
+%% Task 1b) 
 
-% close all;
-% clear;
-% clc;
-%rng('shuffle');
+% Task 1b finds errors in estimates before and after post-processing and
+% plots them.
 
-%std_deviation = 5;
+% Subtasks:
+% -Find an estimate of omega_hat and phase_hat using k=10 for all SNR values, with and
+% without post-processing.
+% -Estimate omega_hat and phase_hat using k=20 without post-processing
+% -Find the error in the estimates and plot them
 
-% N = 513;
-% T = 1e-6;
-% f_real = 1e5;
-% SNR = 10;
-% [X, X_real] = signal(N,SNR);
-% k = 14;
-% plot(X, 'x');
-% hold on;
-% plot(X_real, 'o');
-% 
-% 
-% omega_hat_before_minsearch = find_omega_hat(k,X);
-% 
-% f_hat_before_fminsearch = omega_hat_before_minsearch/(2*pi);
-% phase_hat = find_phase_hat(omega_hat_before_minsearch, X);
-% 
-% [omega_hat_after_minsearch,FVAL,EXITFLAG,OUTPUT] = fminsearch(@(omega) -abs(Big_F(omega, X, T)), omega_hat_before_minsearch) ; 
-% f_hat_after_fminsearch = omega_hat_after_minsearch/(2*pi);
-% 
-% error_before_omega = abs(f_hat_before_fminsearch-f_real);
-% error_after_omega = abs(f_hat_after_fminsearch-f_real);
-% disp('Error before');
-% disp(error_before_omega);
-% disp('Error after');
-% disp(error_after_omega);
-% disp('Final f:');
-% disp(f_hat_after_fminsearch);
-% 
-% %% Different values of SNR
-% close all;
-% clear;
-% clc;
+
+% Set constants.
 N = 513;
 T = 1e-6;
 f_real = 1e5;
 SNRs = [-10, 0, 10, 20, 30, 40, 50, 60];
+
+% Allocate space in arrays.
 errors_before_omega_k10 = zeros(1, size(SNRs,2));
 errors_before_omega_k20 = zeros(1, size(SNRs,2));
 errors_after_omega = zeros(1, size(SNRs,2));
 errors_before_phase_k10 = zeros(1, size(SNRs,2));
 errors_before_phase_k20 = zeros(1, size(SNRs,2));
 errors_after_phase = zeros(1, size(SNRs,2));
+
 k10 = 10;
 k20 = 20;
 phase_0 = pi/8;
 signalFigure = figure();
 for i = 1:size(SNRs, 2)
    
- 
+ %Generate and plot signals
  [X, X_real] = signal(N,SNRs(i), f_real);
  plot(X, 'x');
  hold on;
@@ -63,7 +38,7 @@ for i = 1:size(SNRs, 2)
  title('Plot of complex exponential signal');
  legend('X generated with f deterministic = 1e5', 'X generated with f stochastic, mean = 1e5');
 
-
+ %Generate estimates.
 omega_hat_before_minsearch_k10 = find_omega_hat(k10,X);
 omega_hat_before_minsearch_k20 = find_omega_hat(k20,X);
 
@@ -87,6 +62,9 @@ errors_before_phase_k10(i) = abs(phase_hat_before_k10-phase_0);
 errors_before_phase_k20(i) = abs(phase_hat_before_k20-phase_0);
 errors_after_phase(i) = abs(phase_hat_after-phase_0);
 end
+
+
+% Plotting 
 
 f1 = figure();
 semilogy(SNRs, errors_before_omega_k10,'DisplayName', 'k=10, no post-processing','LineWidth',1.5);
