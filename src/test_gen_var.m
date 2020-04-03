@@ -1,1 +1,0 @@
-[omega_error_var, phi_error_var] = gen_var(60,10);
