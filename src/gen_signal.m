@@ -14,7 +14,7 @@ SNR = 10;
 [X, X_real] = signal(N,SNR);
 
 n = linspace(-256,256,513);
-max_num = 1;
+max_num = 3;
 omega_hat = zeros(1,max_num);
 idx = 1;
 %X = [X, zeros(size(X,2)*2^5, 1)'];
@@ -24,11 +24,11 @@ for k = 14:2:12+max_num*2
 end
 %omega_hat_real = find_omega_hat(k, X_real);
 f_hat = omega_hat/(2*pi)
-phase_hat = find_phase_hat(omega_hat(max_num), X);
+phase_hat = find_phase_hat(omega_hat(max_num), X)
 plot(X, 'x');
 hold on;
 plot(X_real, 'o');
 
 %% Plot Cramer Rao Lower Bound
 
-plottingVariances();
+%plottingVariances();

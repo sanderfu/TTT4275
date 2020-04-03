@@ -1,6 +1,6 @@
 function [var_omega_error, var_phi_error] = gen_var_error(SNR,k, directory)
-%GEN_VAR Summary of this function goes here
-%   Detailed explanation goes here
+%GEN_VAR Returns variance in the error of signal estimates saved in files.
+
 mapstr = "SNR("+int2str(SNR)+")";
 mapstr = mapstr+"_k("+int2str(k)+")";
 

@@ -1,6 +1,6 @@
 function [result] = Big_F(omega, x, T)
-%BIG_F Calculates equation 6, given omega and x
-%   Detailed explanation goes here
+% BIG_F Calculates equation 6, given omega and x
+
 sum = 0;
 if nargin<3
     T = 10^-6;

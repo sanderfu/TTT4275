@@ -1,6 +1,6 @@
 function [var_omega, var_phi] = get_CRLB(SNR, N, n0, A, T)
-%GET_CRLB Summary of this function goes here
-%   Detailed explanation goes here
+%GET_CRLB Calculates the CRLB for omega_hat and phase_hat
+% Implements equation 2 and 3 in task description.
 if nargin < 2
     N = 513;
 end

@@ -1,6 +1,8 @@
 function [result] = fast_fourier_transform(m, M, x, T)
-%FAST-FOURIER-TRANSFORM Summary of this function goes here
-%   Detailed explanation goes here
+%FAST-FOURIER-TRANSFORM 
+% Given an index m, calculates the result of the
+% Big_f function with the corresponding frequency
+
 if nargin<4
     T = 10^-6;
 end

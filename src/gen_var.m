@@ -1,6 +1,6 @@
 function [var_omega_hat, var_phi_hat] = gen_var(SNR,k, directory)
-%GEN_VAR Summary of this function goes here
-%   Detailed explanation goes here
+%GEN_VAR Returns estimated variance of signal samples stored in files.
+
 mapstr = "SNR("+int2str(SNR)+")";
 mapstr = mapstr+"_k("+int2str(k)+")";
 
